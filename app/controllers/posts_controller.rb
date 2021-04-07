@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @posts = Post.all.with_attached_images.order("created_at DESC")
     @post = Post.new
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       redirect_to root_path
     else
