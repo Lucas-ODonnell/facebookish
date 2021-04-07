@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.with_attached_images.order("created_at DESC")
     @post = Post.new
   end
 
@@ -43,6 +43,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, images: [])
   end
 end

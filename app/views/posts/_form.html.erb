@@ -4,5 +4,10 @@
       <%= form.text_area :body, placeholder: "What's on your mind?" %>
     </div>
   </div>
-    <%= form.button :post, class: "button is-danger" %>
+
+  <div class="field">
+    <%= form.file_field :images, multiple: true %>
+  </div>
+  <br />
+  <%= form.button :post, class: "button is-danger" %>
 <% end %>
