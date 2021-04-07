@@ -23,9 +23,39 @@
       <div class="navbar-brand"
         <p class="control">
         <%= link_to root_path, class: "navbar-item" do %>
-          <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+          <span class="icon"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></span>
         </p>
         <% end %>
+            <div class="navbar-burger burger" data-target="navbarExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      </div>
+      <div id="navbarExample" class="navbar-menu">
+       <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+                            <% if user_signed_in? %>
+                <p class="control">
+                <%= link_to current_user.name, edit_user_registration_path, class: "button is-white" %>
+                </p>
+                <p>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-white" %>
+                </p>
+              <% else %>
+                <p class="control">
+                <%= link_to 'Sign In', new_user_session_path, class: "button is-white" %>
+                </p>
+                <p class="control">
+                <%= link_to 'Sign Up', new_user_registration_path, class: "button is-white" %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+       </div>
+
+      </div>
     </nav>
     <%= yield %>
   </body>
