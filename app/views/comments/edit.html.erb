@@ -1,0 +1,17 @@
+<h1> Edit your comment </h1>
+   <%= form_for [@post, @comment] do |form| %>
+     <div>
+       <%= image_tag current_user.avatar.variant(resize_to_fill: [40, 40]), class: "style_image" %>
+     </div>
+     <div>
+       <%= form.text_area :body %>
+       <%= form.hidden_field :user_id, value: current_user.id %>
+       <%= form.hidden_field :name, value: current_user.name %>
+     </div>
+     <div class="image-upload">
+       <%= form.file_field :comment_image %>
+     </div>
+     <br />
+     <%= form.button :comment, class: "button is-danger" %>
+<% end %>
+
