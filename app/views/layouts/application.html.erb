@@ -38,7 +38,7 @@
             <div class="field is-grouped">
               <% if user_signed_in? %>
                 <p class="control">
-                <%= link_to edit_user_registration_path, class: "style_image" do %>
+                <%= link_to user_path(current_user), class: "style_image" do %>
                   <%= image_tag current_user.avatar.variant(resize_to_fill: [128, 128]) %>
                 <% end %>
                 </p>

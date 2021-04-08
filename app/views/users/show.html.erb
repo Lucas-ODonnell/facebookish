@@ -1,6 +1,6 @@
 <div class="column is-half">
   <div class="media-content">
-    <%= render 'posts/form' %>
+    <%= render 'users/form' %>
   </div>
   <br />
   <% @posts.each do |post| %>
@@ -18,9 +18,7 @@
             <figure class="media-left">
               <p class="image">
               <% unless post.user.avatar.nil? %>
-                <%= link_to user_path(post.user) do %>
                 <%= image_tag post.user.avatar.variant(resize_to_limit: [100, nil]) %>
-              <% end %>
               <% end %>
               </p>
             </figure>

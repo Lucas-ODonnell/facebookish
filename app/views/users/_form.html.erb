@@ -1,0 +1,15 @@
+<%= form_with model: @post, local: true do |form| %>
+  <div class="field">
+    <div class="control">
+      <div>
+      <%= image_tag @user.avatar.variant(resize_to_fill: [128, 128]), class: "style_image" %>
+      </div>
+      <%= form.text_area :body, placeholder: "What's on your mind?" %>
+    </div>
+  </div>
+  <div class="image-upload">
+    <%= form.file_field :images, multiple: true %>
+  </div>
+  <br />
+  <%= form.button :post, disabled: true, class: "button is-danger" %>
+<% end %>

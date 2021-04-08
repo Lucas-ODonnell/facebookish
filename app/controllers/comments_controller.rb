@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def edit 
