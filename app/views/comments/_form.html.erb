@@ -1,0 +1,19 @@
+<%= form_for [post, Comment.new] do |form| %>
+<div class="field">
+    <div class="control">
+      <div>
+      <%= image_tag current_user.avatar.variant(resize_to_fill: [40, 40]), class: "style_image" %>
+      </div>
+      <div>
+        <%= form.text_area :body %>
+        <%= form.hidden_field :user_id %>
+      </div>
+  </div>
+  <div class="image-upload">
+    <%= form.file_field :comment_image %>
+  </div>
+  <br />
+  <%= form.button :comment, class: "button is-danger" %>
+  <br />
+<br />
+<% end %>

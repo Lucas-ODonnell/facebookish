@@ -1,0 +1,31 @@
+<% post.comments.each do |comment| %>
+   <div class="box">
+      <div class="media-content">
+        <div class="content">
+            <p>
+            <% if comment.comment_image.attached? %>
+                <%= image_tag comment.comment_image.variant(resize_to_limit: [50, nil]) %>
+            <% end %>
+            </p>
+
+          <p><%= comment.body %></p>
+          <nav class="level-right">
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <span class="icon is-small">
+                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item">
+                    <%= link_to "Edit", edit_post_comment_path(post) %>
+                  </div>
+                  <div class="dropdown-item">
+                    <%= link_to "Delete", comment, method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      <% end %> 
