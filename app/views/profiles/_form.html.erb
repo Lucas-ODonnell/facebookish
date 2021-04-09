@@ -1,0 +1,41 @@
+<%= form_with model: @profile, local: true do |form| %>
+  <label class="label">Website</label>
+  <div class="control has-icons-left">
+    <%= form.text_field :email %>
+  </div>
+  <br>
+  <label class="label">Email</label>
+  <div class="control has-icons-left">
+    <%= form.email_field :email %>
+  </div>
+  </div>
+  <br>
+  <label class="label">Phone</label>
+  <div class="control has-icons-left">
+    <%= form.text_field :phone %>
+  </div>
+  </div>
+  <br>
+  <label class="label">School</label>
+  <div class="control has-icons-left">
+    <%= form.text_field :school %>
+  </div>
+  </div>
+  <br>
+  <label class="label">Job</label>
+  <div class="control has-icons-left">
+    <%= form.text_field :job %>
+  </div>
+  </div>
+  <br>
+  <label class="label">Location</label>
+  <div class="control has-icons-left">
+    <%= form.text_field :location %>
+  </div>
+  </div>
+  <br>
+  <div>
+    <%= form.button :create, class: "button is-danger" %>
+  </div>
+<% end %>
+
