@@ -1,41 +1,137 @@
 <%= form_with model: @profile, local: true do |form| %>
+  <div class="columns is-mobile">
+    <div class="column is-offset-1">
+  <div class="field">
   <label class="label">Website</label>
-  <div class="control has-icons-left">
-    <%= form.text_field :email %>
+  <div class="control">
+    <%= form.text_field :website, class:"input is-danger" %>
   </div>
-  <br>
+  </div>
+  <div class="field">
   <label class="label">Email</label>
-  <div class="control has-icons-left">
-    <%= form.email_field :email %>
+  <div class="control">
+    <%= form.email_field :email, class:"input is-danger" %>
   </div>
   </div>
-  <br>
+  <div class="field">
   <label class="label">Phone</label>
-  <div class="control has-icons-left">
-    <%= form.text_field :phone %>
+  <div class="control">
+    <%= form.text_field :phone, class:"input is-danger" %>
   </div>
   </div>
-  <br>
-  <label class="label">School</label>
-  <div class="control has-icons-left">
-    <%= form.text_field :school %>
+  <div class="field">
+  <label class="label">Address</label>
+  <div class="control">
+    <%= form.text_field :location, class:"input is-danger" %>
   </div>
   </div>
-  <br>
+  <div class="field">
+  <label class="label">City</label>
+  <div class="control">
+    <%= form.text_field :city, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">State</label>
+  <div class="control">
+    <%= form.text_field :state, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Zip code</label>
+  <div class="control">
+    <%= form.text_field :zipcode, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Country</label>
+  <div class="control">
+    <%= form.text_field :country, class:"input is-danger" %>
+  </div>
+  </div>
+    </div>
+    <div class="column">
+  <div class="field">
+  <label class="label">Hometown</label>
+  <div class="control">
+    <%= form.text_field :hometown, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Father</label>
+  <div class="control">
+    <%= form.email_field :father, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Mother</label>
+  <div class="control">
+    <%= form.text_field :mother, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Brothers</label>
+  <div class="control">
+    <%= form.text_field :brothers, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Sisters</label>
+  <div class="control">
+    <%= form.text_field :sisters, class:"input is-danger" %>
+  </div>
+  </div>
+     </div>
+       <div class="column">
+  <div class="field">
+  <label class="label">Short bio</label>
+  <div class="control">
+    <%= form.text_field :bio, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Birthday</label>
+  <div class="control">
+    <%= form.email_field :birthday, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Gender</label>
+  <div class="control">
+    <%= form.text_field :gender, class:"input is-danger" %>
+  </div>
+  </div>
+  <div class="field">
+  <label class="label">Languages</label>
+  <div class="control">
+    <%= form.text_field :language, class:"input is-danger" %>
+  </div>
+  </div>
+       </div>
+     <div class="column">
+  <div class="field">
   <label class="label">Job</label>
-  <div class="control has-icons-left">
-    <%= form.text_field :job %>
+  <div class="control">
+    <%= form.text_field :job, class:"input is-danger" %>
   </div>
   </div>
-  <br>
-  <label class="label">Location</label>
-  <div class="control has-icons-left">
-    <%= form.text_field :location %>
+  <div class="field">
+  <label class="label">College</label>
+  <div class="control">
+    <%= form.email_field :college, class:"input is-danger" %>
   </div>
   </div>
-  <br>
-  <div>
-    <%= form.button :create, class: "button is-danger" %>
+  <div class="field">
+  <label class="label">High school</label>
+  <div class="control">
+    <%= form.text_field :highschool, class:"input is-danger" %>
+  </div>
+  </div>
+         </div>
+  </div>
+  <div class="columns is-mobile is-centered">
+    <%= form.button :submit, class: "button is-danger" %>
+    </div>
   </div>
 <% end %>
 

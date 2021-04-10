@@ -4,7 +4,7 @@
       <div>
       <%= image_tag current_user.avatar.variant(resize_to_fill: [128, 128]), class: "style_image" %>
       </div>
-      <%= form.text_area :body, placeholder: "What's on your mind?" %>
+      <%= form.text_area :body, class: "textarea is-danger", placeholder:"What's on your mind, #{current_user.name}?"%>
     </div>
   </div>
   <div class="image-upload">

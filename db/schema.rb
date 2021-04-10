@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_222717) do
+ActiveRecord::Schema.define(version: 2021_04_10_055622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_04_08_222717) do
 
   create_table "profiles", force: :cascade do |t|
     t.text "job"
-    t.text "school"
     t.text "phone"
     t.text "email"
     t.text "location"
@@ -65,6 +64,21 @@ ActiveRecord::Schema.define(version: 2021_04_08_222717) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "state"
+    t.text "city"
+    t.text "country"
+    t.text "zipcode"
+    t.text "father"
+    t.text "mother"
+    t.text "brothers"
+    t.text "sisters"
+    t.text "hometown"
+    t.text "gender"
+    t.text "birthday"
+    t.text "language"
+    t.text "bio"
+    t.text "highschool"
+    t.text "college"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
