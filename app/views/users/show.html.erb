@@ -1,3 +1,12 @@
 <div class="columns is-centered">
+  <% if @user.profile.nil? && current_user.id == @user.id %>
+    <%= link_to "Create your profile", new_profile_path %>
+  <% elsif @user.profile.nil? && current_user.id != @user.id %>
+  <% else %>
+    <%= link_to "View Profile", profile_path(@user.profile), class:"button is-danger" %>
+  <% end %>
+</div>
+<br>
+<div class="columns is-centered">
   <%= render 'users/feed' %>
 </div>

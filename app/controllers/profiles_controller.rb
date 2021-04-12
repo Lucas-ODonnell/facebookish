@@ -8,14 +8,14 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params) 
     @profile.user_id = current_user.id
     if @profile.save
-      redirect_to root_path 
+      redirect_to profile_path(@profile) 
     else
       render :new
     end
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(params[:id]) 
   end
 
   def edit
@@ -34,7 +34,7 @@ class ProfilesController < ApplicationController
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy
-    redirect_to root_path
+    redirect_to user_path(current_user.id)
   end
 
   private

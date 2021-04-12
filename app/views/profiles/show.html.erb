@@ -1,0 +1,153 @@
+<div class="columns is-mobile is-centered">
+  <div class="column is-half">
+    <h1><strong><%= "#{@profile.user.name}'s Profile"%></h1></strong>
+  </div>
+</div>
+<div class="columns is-mobile">
+  <div class="column is-offset-1">
+    <div class="field">
+      <label class="label">Website</label>
+      <div class="control">
+        <%= @profile.website %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <%= @profile.email %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Phone</label>
+      <div class="control">
+        <%= @profile.phone %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Address</label>
+      <div class="control">
+        <%= @profile.location %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">City</label>
+      <div class="control">
+        <%= @profile.city %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">State</label>
+      <div class="control">
+        <%= @profile.state %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Zip code</label>
+      <div class="control">
+        <%= @profile.zipcode %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Country</label>
+      <div class="control">
+        <%= @profile.country %>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Hometown</label>
+      <div class="control">
+        <%= @profile.hometown %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Father</label>
+      <div class="control">
+        <%= @profile.father %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Mother</label>
+      <div class="control">
+        <%= @profile.mother %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Brothers</label>
+      <div class="control">
+        <%= @profile.brothers %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Sisters</label>
+      <div class="control">
+        <%= @profile.sisters %>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Short bio</label>
+      <div class="control">
+        <%= @profile.bio %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Birthday</label>
+      <div class="control">
+        <%= @profile.birthday %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Gender</label>
+      <div class="control">
+        <%= @profile.gender %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Languages</label>
+      <div class="control">
+        <%= @profile.language %>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="field">
+      <label class="label">Job</label>
+      <div class="control">
+        <%= @profile.job %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">College</label>
+      <div class="control">
+        <%= @profile.college %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">High school</label>
+      <div class="control">
+        <%= @profile.highschool %>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @profile.user_id == current_user.id %>
+  <div class="columns is-mobile is-centered">
+    <nav class="level">
+      <div class="level-right">
+        <p class="level-item">
+        <%= link_to edit_profile_path do %>
+          <span class="icon has-text-danger"><i class="fa fa-pencil fa-1x" aria-hidden="true"></i></span>
+        <% end %>
+        </p>
+        <p class="level-item">
+        <%= link_to profile_path(current_user.profile), method: :delete, data: { confirm: "Are you sure you want to delete your profile info?" } do %>
+          <span class="icon has-text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+        <% end %>
+        </p>
+      </div>
+    </nav>
+  </div>
+<% end %>
