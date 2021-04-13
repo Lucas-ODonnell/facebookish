@@ -1,12 +1,63 @@
+<section class="hero">
+  <div class="hero-body">
+    <br>
+     <% unless @user.avatar.nil? %>
+       <p class="has-text-centered">
+       <%= image_tag @user.avatar.variant(resize_to_limit: [300, nil]), class:"style_image" %>
+       </p>
+     <% end %>
+     <br>
+     <p class="title has-text-centered">
+     <%= "#{@user.name}'s profile" %>
+     </p>
+     <p class="subtitle has-text-centered">
+      Friend button goes here
+     </p>
+  </div>
+</section>
 <div class="columns is-centered">
-  <% if @user.profile.nil? && current_user.id == @user.id %>
-    <%= link_to "Create your profile", new_profile_path %>
-  <% elsif @user.profile.nil? && current_user.id != @user.id %>
-  <% else %>
-    <%= link_to "View Profile", profile_path(@user.profile), class:"button is-danger" %>
-  <% end %>
+  <div class="column">
+    <% if @user.profile.nil? && current_user.id == @user.id %>
+      <%= link_to "Create your profile", new_profile_path %>
+    <% else %>
+    <% end %>
+  </div>
 </div>
 <br>
-<div class="columns is-centered">
-  <%= render 'users/feed' %>
+<div class="columns">
+  <div class="column">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <div class="box">
+              <p class="title has-text-centered">About</p>
+              <%= render 'user_profile' unless @user.profile.nil? %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="tile is-child is-vertical">
+            <div class="box">
+              <p class="title has-text-centered">Images</p>
+              <% @user.posts.each do |post| %>
+                <p>
+                <% if post.images.attached? %>
+                  <% post.images.each do |pics| %>
+                    <%= image_tag pics.variant(resize_to_limit: [100, nil]) %>
+                  <% end %>
+                <% end %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-three-fifths">
+      <%= render 'users/feed' %>
+    </div>
+  </div>
 </div>
