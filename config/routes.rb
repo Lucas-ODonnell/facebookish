@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts do
-    resources :comments
+    resources :comments do
+      put "like" => "comments#vote"
+    end
+    put "like" => "posts#vote"
   end
 
   resources :users 

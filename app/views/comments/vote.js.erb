@@ -1,0 +1,8 @@
+<% if current_user.liked? @comment %>
+    $('.like-btn-cmt').addClass('liked');
+<% else %>
+     $('.like-btn-cmt').addClass('like-btn');
+<% end %>
+  $('.likes-count-cmt').html("<%=@comment.get_upvotes.length %>")
+
+
