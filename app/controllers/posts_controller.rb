@@ -44,6 +44,7 @@ class PostsController < ApplicationController
   end
 
   def vote
+    #Like function
     @post = Post.find(params[:post_id])
     if !current_user.liked? @post
       @post.liked_by current_user

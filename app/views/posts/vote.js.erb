@@ -1,7 +1,8 @@
 <% if current_user.liked? @post %>
     $('.like-btn').addClass('liked');
 <% else %>
-     $('.like-btn').addClass('like-btn');
+    $('.like-btn').addClass('like-btn');
 <% end %>
-  $('.likes-count').html("<%= @post.get_likes.size %>")
-    
+  <%# This specifies the post we want changed. Same for the comment version %>
+  $('.likes-count-<%= @post.id %>').html("<%= @post.get_likes.size %>")
+

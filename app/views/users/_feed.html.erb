@@ -49,7 +49,7 @@
                   <%= link_to post_like_path(post), class: "like-btn", method: :put, remote: :true do %>
                     <span class="icon is-small has-text-danger"><i class="fa fa-thumbs-up"></i></span>
                   <% end %>
-                  <span class="likes-count"><%= post.get_likes.size %></span>
+                  <span class="likes-count-<%=post.id %>"><%= post.get_likes.size %></span>
                 </a>
 
               </nav>
@@ -87,7 +87,7 @@
                   <%= link_to post_comment_like_path(post, comment), class: "like-btn-cmt", method: :put, remote: :true do %>
                     <span class="icon is-small has-text-danger"><i class="fa fa-thumbs-up"></i></span>
                   <% end %>
-                  <span class="likes-count-cmt"><%= comment.get_upvotes.length %></span>
+                  <span class="likes-count-<%= comment.id %>"><%= comment.get_upvotes.length %></span>
                 </a>
 
               </div>

@@ -3,6 +3,6 @@
 <% else %>
      $('.like-btn-cmt').addClass('like-btn');
 <% end %>
-  $('.likes-count-cmt').html("<%=@comment.get_upvotes.length %>")
+  $('.likes-count-<%= @comment.id %>').html("<%=@comment.get_upvotes.length %>")
 
 
