@@ -1,18 +1,24 @@
 <section class="hero">
   <div class="hero-body">
     <br>
-     <% unless @user.avatar.nil? %>
-       <p class="has-text-centered">
-       <%= image_tag @user.avatar.variant(resize_to_limit: [300, nil]), class:"style_image" %>
-       </p>
-     <% end %>
-     <br>
-     <p class="title has-text-centered">
-     <%= "#{@user.name}'s profile" %>
-     </p>
-     <p class="subtitle has-text-centered">
-      Friend button goes here
-     </p>
+    <% unless @user.avatar.nil? %>
+      <p class="has-text-centered">
+      <%= image_tag @user.avatar.variant(resize_to_limit: [300, nil]), class:"style_image" %>
+      </p>
+    <% end %>
+    <br>
+    <p class="title has-text-centered">
+    <%= "#{@user.name}'s profile" %>
+    </p>
+    <% if @user.id != current_user.id %>
+      <div class="has-text-centered">
+        <%= button_to 'Add Friend', invitations_path(friend_id: @user), method: :post, class:"center-btn" %>
+      </div>
+    <% else %>
+      <div class="has-text-centered">
+        <%= button_to "Friend requests", invitations_path, method: :post %>
+      </div>
+    <% end %>
   </div>
 </section>
 <div class="columns is-centered">
@@ -51,6 +57,16 @@
                 <% end %>
                 </p>
               <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-vertical">
+        <div class="tile">
+          <div class="tile is-child is-vertical">
+            <div class="box">
+              <p class="title has-text-centered">Friends</p>
+              <h1><strong> stuff will go here </strong></h1>
             </div>
           </div>
         </div>
