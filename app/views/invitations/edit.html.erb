@@ -1,0 +1,11 @@
+<h1 class="has-text-centered"><strong><%="#{@invitation.creator.name} wants to be your friend" %></strong></h1>
+
+<%= form_for @invitation, local: true do |form| %>
+  <div class="has-text-centered" >
+    <%= form.select :status, @status_options %>
+  </div>
+  <br>
+  <div class="has-text-centered" >
+    <%= submit_tag "Save Change", class:"button is-danger"  %>
+  </div>
+<% end %>

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
   has_one :profile, dependent: :destroy
-  has_many :invitations, dependent: :destroy
+  has_many :invitations, dependent: :destroy, inverse_of: :creator
   has_many :pending_invitations, -> { where confirmed: false },
     class_name: :Invitation,
     foreign_key: :friend_id,

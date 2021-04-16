@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @invitations = current_user.invitations.all
+    @invitations = current_user.pending_invitations.all
   end
 
   def show

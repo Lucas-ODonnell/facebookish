@@ -1,1 +1,7 @@
-<h1> test </h1>
+<h1 class="has-text-centered"><strong>Friend Requests</strong></h1>
+<br>
+<% @invitations.each do |invitation| %>
+  <div class="has-text-centered">
+    <%= link_to "#{invitation.creator.name}'s invitation", edit_invitation_path(invitation) %>
+  </div>
+<% end %>
