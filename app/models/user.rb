@@ -13,7 +13,6 @@ class User < ApplicationRecord
     class_name: :Invitation,
     foreign_key: :friend_id,
     dependent: :destroy
-
   validates :name, presence: true
 
 end

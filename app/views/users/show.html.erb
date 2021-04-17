@@ -10,70 +10,84 @@
     <p class="title has-text-centered">
     <%= "#{@user.name}'s profile" %>
     </p>
-    <% if @user.id != current_user.id %>
+    <% if @user.id != current_user.id && !Invitation.where(user_id: current_user.id, friend_id: @user.id).exists? && !Invitation.where(user_id: @user.id, friend_id: current_user.id).exists?%>
       <div class="has-text-centered">
         <%= button_to 'Add Friend', invitations_path(friend_id: @user), method: :post, class:"center-btn" %>
       </div>
+    <% elsif @user.id != current_user.id && Invitation.where(user_id: current_user.id, friend_id: @user.id).exists? || Invitation.where(user_id: @user.id, friend_id: current_user.id).exists? %>
     <% else %>
       <div class="has-text-centered">
         <%= button_to 'Friend Requests', invitations_path, method: :get, class:"center-btn" %>
+        <%= "(#{@count.length})" %>
       </div>
     <% end %>
   </div>
 </section>
-<div class="columns is-centered">
-  <div class="column">
-    <% if @user.profile.nil? && current_user.id == @user.id %>
-      <%= link_to "Create your profile", new_profile_path %>
-    <% else %>
-    <% end %>
+<% if @user.id == current_user.id || Invitation.where(user_id: current_user.id, friend_id: @user.id,status: 1).exists? ||  Invitation.where(user_id: @user.id, friend_id: current_user.id ,status: 1).exists? %>
+  <div class="columns is-centered">
+    <div class="column">
+      <% if @user.profile.nil? && current_user.id == @user.id %>
+        <%= link_to "Create your profile", new_profile_path %>
+      <% else %>
+      <% end %>
+    </div>
   </div>
-</div>
-<br>
-<div class="columns">
-  <div class="column">
-    <div class="tile is-ancestor">
-      <div class="tile is-vertical">
-        <div class="tile">
-          <div class="tile is-parent is-vertical">
-            <div class="box">
-              <p class="title has-text-centered">About</p>
-              <%= render 'user_profile' unless @user.profile.nil? %>
+  <br>
+  <div class="columns">
+    <div class="column">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <div class="box">
+                <p class="title has-text-centered">About</p>
+                <%= render 'user_profile' unless @user.profile.nil? %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="tile is-vertical">
-        <div class="tile">
-          <div class="tile is-child is-vertical">
-            <div class="box">
-              <p class="title has-text-centered">Images</p>
-              <% @user.posts.each do |post| %>
-                <p>
-                <% if post.images.attached? %>
-                  <% post.images.each do |pics| %>
-                    <%= image_tag pics.variant(resize_to_limit: [100, nil]) %>
+        <div class="tile is-vertical">
+          <div class="tile">
+            <div class="tile is-child is-vertical">
+              <div class="box">
+                <p class="title has-text-centered">Images</p>
+                <% @user.posts.each do |post| %>
+                  <p>
+                  <% if post.images.attached? %>
+                    <% post.images.each do |pics| %>
+                      <%= image_tag pics.variant(resize_to_limit: [100, nil]) %>
+                    <% end %>
+                  <% end %>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-vertical">
+          <div class="tile">
+            <div class="tile is-child is-vertical">
+              <div class="box">
+                <p class="title has-text-centered">Friends</p>
+                <% @invitations_to.each do |invitation| %>
+                  <%= link_to user_path(invitation.creator) do %>
+                    <%= image_tag invitation.creator.avatar.variant(resize_to_fill: [100, 100]) %>
                   <% end %>
                 <% end %>
-                </p>
-              <% end %>
+                <% @invitations_from.each do |invitation| %>
+                  <%= link_to user_path(invitation.acceptor) do %>
+                    <%= image_tag invitation.acceptor.avatar.variant(resize_to_fill: [100, 100]) %>
+                  <% end %>
+                <% end %>
+
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="tile is-vertical">
-        <div class="tile">
-          <div class="tile is-child is-vertical">
-            <div class="box">
-              <p class="title has-text-centered">Friends</p>
-              <h1><strong> stuff will go here </strong></h1>
-            </div>
-          </div>
-        </div>
+      <div class="column is-three-fifths">
+        <%= render 'users/feed' %>
       </div>
-    </div>
-    <div class="column is-three-fifths">
-      <%= render 'users/feed' %>
     </div>
   </div>
-</div>
+<% end %>
