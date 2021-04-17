@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   respond_to :js, :json, :html
   before_action :authenticate_user!
   def index
-    @posts = Post.all.with_attached_images.order("created_at DESC")
+    @posts = Post.where(user_id: current_user).or(Post.where(user_id: current_user.friends)).with_attached_images.order("created_at DESC")
     @post = Post.new
   end
 

@@ -7,6 +7,7 @@ class InvitationsController < ApplicationController
   def edit 
     @invitation = Invitation.find(params[:id])
     @status_options = possible_statuses
+    @invitation.confirm
   end
 
   def update
@@ -21,11 +22,11 @@ class InvitationsController < ApplicationController
 
   def create
     @invitation = current_user.invitations.build(friend_id: params[:friend_id])
-      if @invitation.save
-        redirect_back(fallback_location: root_path)
-      else
-        redirect_back(fallback_location: root_path)
-      end
+    if @invitation.save
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy
@@ -35,10 +36,11 @@ class InvitationsController < ApplicationController
   end
 
   private
-  
+
   def possible_statuses
     Invitation.statuses.map { |k, _v| [k.capitalize, k] }
   end
+
 
   def invitation_params
     params.require(:invitation).permit(:status)
