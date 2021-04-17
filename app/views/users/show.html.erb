@@ -15,11 +15,6 @@
         <%= button_to 'Add Friend', invitations_path(friend_id: @user), method: :post, class:"center-btn" %>
       </div>
     <% elsif @user.id != current_user.id && Invitation.where(user_id: current_user.id, friend_id: @user.id).exists? || Invitation.where(user_id: @user.id, friend_id: current_user.id).exists? %>
-    <% else %>
-      <div class="has-text-centered">
-        <%= button_to 'Friend Requests', invitations_path, method: :get, class:"center-btn" %>
-        <%= "(#{@count.length})" %>
-      </div>
     <% end %>
   </div>
 </section>

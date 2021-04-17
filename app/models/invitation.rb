@@ -15,4 +15,9 @@ class Invitation < ApplicationRecord
     deny: 0
   }
 
+  def confirm
+    acceptor.friends << creator
+    creator.friends << acceptor
+  end
 end
+

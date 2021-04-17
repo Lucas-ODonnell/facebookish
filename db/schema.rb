@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_200613) do
+ActiveRecord::Schema.define(version: 2021_04_17_025403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2021_04_16_200613) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "invitations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "friend_id"
@@ -75,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_200613) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.integer "author_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

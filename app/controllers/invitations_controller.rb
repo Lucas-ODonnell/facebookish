@@ -10,6 +10,7 @@ class InvitationsController < ApplicationController
   end
 
   def update
+    @friendship = Friendship.new
     @invitation = Invitation.find(params[:id])
     if @invitation.update(invitation_params)
       redirect_to invitations_path(current_user)
@@ -34,7 +35,7 @@ class InvitationsController < ApplicationController
   end
 
   private
-
+  
   def possible_statuses
     Invitation.statuses.map { |k, _v| [k.capitalize, k] }
   end
