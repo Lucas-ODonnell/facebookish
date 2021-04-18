@@ -1,5 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def create
+    super
+    UserMailer.with(user: @user).welcome_email.deliver_now if @user.persisted? 
+  end
   private
 
   def sign_up_params
