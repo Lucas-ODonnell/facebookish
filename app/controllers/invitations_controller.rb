@@ -26,7 +26,7 @@ class InvitationsController < ApplicationController
   def create #creates the invitation default is deny
     @invitation = current_user.invitations.build(friend_id: params[:friend_id])
     if @invitation.save
-      redirect_back(fallback_location: root_path)
+      redirect_to searches_path
     else
       redirect_back(fallback_location: root_path)
     end

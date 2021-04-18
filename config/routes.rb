@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :users 
   resources :profiles
   resources :invitations
-  resources :friendships
+  resources :searches, only: [:index]
 end

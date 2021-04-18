@@ -1,0 +1,7 @@
+<h1 class="has-text-centered"><strong>Potential Friends!</strong></h1>
+<br>
+<% @users.each do |user| %>
+  <%= link_to user_path(user) do %>
+    <%= image_tag user.avatar.variant(resize_to_fill: [200, 200]) %>
+  <% end %>
+<% end %>
