@@ -2,6 +2,6 @@
 <br>
 <% @invitations.each do |invitation| %>
   <div class="has-text-centered">
-    <%= link_to "#{invitation.creator.name}'s invitation", edit_invitation_path(invitation) %>
+    <%= link_to "#{invitation.creator.name}'s invitation", edit_invitation_path(invitation)%>
   </div>
 <% end %>

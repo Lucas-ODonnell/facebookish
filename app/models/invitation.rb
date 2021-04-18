@@ -18,6 +18,11 @@ class Invitation < ApplicationRecord
   def confirm
     acceptor.friends << creator
     creator.friends << acceptor
+    self.destroy
+  end
+
+  def deny
+    self.destroy
   end
 end
 

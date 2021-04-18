@@ -10,12 +10,7 @@ class UsersController < ApplicationController
     @posts = Post.where(user_id: @user.id)
     @comments = Comment.all
     #to get the count of pending requests
-    @count = Invitation.where(friend_id: @user.id, status: "deny")
-    #invitations where I invited
-    @invitations_to = Invitation.where(friend_id: @user.id, status: "confirm")
-    #invitations where they invited
-    @invitations_from = Invitation.where(user_id: @user.id, status: "confirm")
-
+    @friends_list = @user.friends
     @post = Post.new
     redirect_back(fallback_location: root_path) if @post.save
   end
