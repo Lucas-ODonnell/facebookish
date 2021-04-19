@@ -18,7 +18,7 @@ class User < ApplicationRecord
     dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, dependent: :destroy
-  validates :name, presence: true
+  validates :name, :avatar, presence: true
 
 
 end
