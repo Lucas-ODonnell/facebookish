@@ -30,7 +30,7 @@ gem "bulma-rails", "~> 0.9.1"
 gem 'font-awesome-rails'
 gem 'acts_as_votable', '~> 0.12.1'
 gem 'aws-sdk-rails', '~> 3'
-gem 'aws-sdk-s3', '~> 1'
+gem 'aws-sdk-s3', '~> 1', require: false
 gem 'figaro'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
