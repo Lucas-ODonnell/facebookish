@@ -2,7 +2,7 @@
 <br>
 <% @users.each do |user| %>
   <%= link_to user_path(user) do %>
-    <% if user.avatar.exists? %>
+    <% if !user.avatar.nil? %>
     <%= image_tag user.avatar.variant(resize_to_fill: [200, 200]) %>
   <% else %>
     <%= user.email %>
