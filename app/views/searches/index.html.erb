@@ -1,11 +1,12 @@
 <h1 class="has-text-centered"><strong>Potential Friends!</strong></h1>
 <br>
 <% @users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <% if !user.avatar.nil? %>
-    <%= image_tag user.avatar.variant(resize_to_fill: [200, 200]) %>
+  <% if !user.avatar.nil? %>
+    <%= link_to user_path(user) do %>
+      <%= image_tag user.avatar.variant(resize_to_fill: [200, 200]) %>
+    <% end %>
   <% else %>
-    <%= user.email %>
+    <%= link_to user.name, user_path(user) %>
   <% end %>
 <% end %>
 <br>

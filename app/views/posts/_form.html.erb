@@ -2,7 +2,9 @@
   <div class="field">
     <div class="control">
       <div>
-      <%= image_tag current_user.avatar.variant(resize_to_fill: [128, 128]), class: "style_image" %>
+        <% if !current_user.avatar.nil? %>
+          <%= image_tag current_user.avatar.variant(resize_to_fill: [128, 128]), class: "style_image" %>
+        <% end %>
       </div>
       <%= form.text_area :body, class: "textarea is-danger", placeholder:"What's on your mind, #{current_user.name}?"%>
     </div>

@@ -68,8 +68,12 @@
               <div class="box">
                 <p class="title has-text-centered">Friends</p>
                 <% @friends_list.each do |friend| %>
-                  <%= link_to user_path(friend) do %>
-                    <%= image_tag friend.avatar.variant(resize_to_fill: [100, 100]) %>
+                  <% if !friend.avatar.nil? %>
+                    <%= link_to user_path(friend) do %>
+                      <%= image_tag friend.avatar.variant(resize_to_fill: [100, 100]) %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to friend.name, user_path(friend) %>
                   <% end %>
                 <% end %>
               </div>

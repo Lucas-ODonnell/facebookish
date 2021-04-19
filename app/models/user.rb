@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :invitations, class_name: "Invitation", 
     foreign_key: :user_id, 
-    dependent: :destroy, 
-    inverse_of: :creator
-  has_many :pending_invitations, -> { where confirmed: false },
+    inverse_of: :creator,
+    dependent: :destroy
+  has_many :pending_invitations, 
     class_name: :Invitation,
     foreign_key: :friend_id,
     dependent: :destroy
